@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "688fca12-c2aa-4989-b0b0-0699b8b300ad",
+		"_postman_id": "a3007f86-c8fa-46c6-a949-b85ada8424b5",
 		"name": "Dar.Finance (Test)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -149,6 +149,210 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "user.get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "v",
+								"value": "{{v}}",
+								"type": "text"
+							},
+							{
+								"key": "project",
+								"value": "{{project}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/user.get?phone=79000000000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user.get"
+							],
+							"query": [
+								{
+									"key": "phone",
+									"value": "79000000000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user.update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "v",
+								"value": "{{v}}",
+								"type": "text"
+							},
+							{
+								"key": "project",
+								"value": "{{project}}",
+								"type": "text"
+							},
+							{
+								"key": "first_name",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "last_name",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "middle_name",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "email",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "phone",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/user.update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user.update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notifications.get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "v",
+								"value": "{{v}}",
+								"type": "text"
+							},
+							{
+								"key": "project",
+								"value": "{{project}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/notifications.get?n=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"notifications.get"
+							],
+							"query": [
+								{
+									"key": "n",
+									"value": "1",
+									"description": "Если n есть, то выводим только непрочитанное."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "notifications.read",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "v",
+								"value": "{{v}}",
+								"type": "text"
+							},
+							{
+								"key": "project",
+								"value": "{{project}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/notifications.read",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"notifications.read"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
@@ -176,7 +380,7 @@
 	"variable": [
 		{
 			"key": "host",
-			"value": "http://copybro-test/api"
+			"value": "http://127.0.0.1/api"
 		},
 		{
 			"key": "v",

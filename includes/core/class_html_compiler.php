@@ -67,7 +67,7 @@ class HTML_Compiler extends HTML {
         }
         $compiled_content .= $text_blocks[$i];
 		// file end
-        if (($_len = strlen($compiled_content)) && ($compiled_content{$_len - 1} == "\n" )) {
+        if (($_len = strlen($compiled_content)) && ($compiled_content[$_len - 1] == "\n" )) {
             $compiled_content = substr($compiled_content, 0, -1);
         }
 		// output
@@ -115,18 +115,18 @@ class HTML_Compiler extends HTML {
 
     private function parse_var($var_expr) {
 		// handling
-		$var_ref = is_numeric($var_expr{0}) ? $var_expr : substr($var_expr, 1);
+		$var_ref = is_numeric($var_expr[0]) ? $var_expr : substr($var_expr, 1);
 		preg_match_all('!(?:^\w+)|(?:'.$this->var_bracket_regexp.')|\.\$?\w+|\S+!', $var_ref, $match);
 		$indexes = $match[0];
 		$var_name = array_shift($indexes);
 		$output = ($var_name == 'ref') ? $this->compile_ref($indexes) : "self::\$_tpl_vars['$var_name']";
 		// inner vars
 		foreach ($indexes as $index) {
-			if ($index{0} == '[') {
+			if ($index[0] == '[') {
 				$index = substr($index, 1, -1);
 				if (is_numeric($index)) {
 					$output .= "[$index]";
-				} elseif ($index{0} == '$') {
+				} elseif ($index[0] == '$') {
 					if (strpos($index, '.') !== false) $output .= '['.$this->parse_var($index).']';
 					else $output .= "[self::\$_tpl_vars['".substr($index, 1)."']]";
 				} else {
@@ -135,8 +135,8 @@ class HTML_Compiler extends HTML {
 					$var_section_prop = isset($var_parts[1]) ? $var_parts[1] : 'index';
 					$output .= "[self::\$_sections['$var_section']['$var_section_prop']]";
 				}
-			} else if ($index{0} == '.') {
-				if ($index{1} == '$') $output .= "[self::\$_tpl_vars['".substr($index, 2)."']]";
+			} else if ($index[0] == '.') {
+				if ($index[1] == '$') $output .= "[self::\$_tpl_vars['".substr($index, 2)."']]";
 				else $output .= "['".substr($index, 1)."']";
 			} else {
 				$output .= $index;

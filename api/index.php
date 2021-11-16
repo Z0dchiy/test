@@ -71,7 +71,10 @@ else {
     // routes (auth)
     if ($path == 'auth.logout') call('POST', $method, NULL, 'Session::logout');
     // routes (users)
-    // your methods here ...
+    elseif ($path == 'user.get') call('GET', $method, $query,'User::user_info');
+    elseif ($path == 'user.update') call('POST', $method, $query, 'User::owner_update');
+    elseif ($path == 'notifications.get') call('GET', $method, $query,'Notification::get');
+    elseif ($path == 'notifications.read') call('POST', $method, $query,'Notification::read');
     // routes (not found)
     response(error_response(1002, 'Application authorization failed: method is unavailable with service token.'));
 }
